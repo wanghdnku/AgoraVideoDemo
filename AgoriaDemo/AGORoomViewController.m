@@ -16,17 +16,13 @@
 
 @property (nonatomic, strong) AgoraRtcEngineKit *agoraKit;
 @property (nonatomic, strong) UIView *localView;
-//@property (nonatomic, strong) WDGLocalStream *localStream;
 @property (nonatomic, strong) NSMutableArray<AgoraRtcVideoCanvas *> *streams;
 @property (nonatomic, strong) NSMutableDictionary *videoDic;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *grid;
-@property (nonatomic, weak) IBOutlet UIButton *audioSwitch;
-@property (nonatomic, weak) IBOutlet UIButton *videoSwitch;
-@property (nonatomic, assign) BOOL audioOn;
-@property (nonatomic, assign) BOOL videoOn;
 
 @end
+
 
 @implementation AGORoomViewController
 
@@ -34,25 +30,19 @@
     [super viewDidLoad];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
-    [self initializeAgoraEngine];
-    [self setupVideo];
-    
     _streams = [[NSMutableArray alloc] init];
     _videoDic = [[NSMutableDictionary alloc] init];
-    
-    // 配置 UICollectionView
     [self setupCollectionView];
-    // 创建并预览本地流
+    
+    [self initializeAgoraEngine];
+    [self setupVideo];
     [self setupLocalStream];
-    // 创建或加入房间
     [self joinRoom];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.title = self.roomId;
-    self.audioOn = YES;
-    self.videoOn = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSessionRouteChange:) name:AVAudioSessionRouteChangeNotification object:nil];
 }
 
@@ -62,18 +52,18 @@
 
 - (void)setupVideo {
     [self.agoraKit enableVideo];
-    [self.agoraKit setVideoProfile:AgoraRtc_VideoProfile_360P swapWidthAndHeight: false];
+    [self.agoraKit setVideoProfile:self.dimension swapWidthAndHeight:false];
 }
 
 - (void)setupLocalStream {
-    AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
-    videoCanvas.uid = 0;
-    [self.streams addObject:videoCanvas];
+    AgoraRtcVideoCanvas *localCanvas = [[AgoraRtcVideoCanvas alloc] init];
+    localCanvas.uid = 0;
+    localCanvas.view = self.localView;
+    localCanvas.renderMode = AgoraRtc_Render_Adaptive;
+    [self.streams addObject:localCanvas];
     [self.grid reloadData];
-    //videoCanvas.view = self.localView;
-    videoCanvas.renderMode = AgoraRtc_Render_Adaptive;
-    [self.agoraKit setupLocalVideo:videoCanvas];
-    
+    //[self.agoraKit setupLocalVideo:localCanvas];
+    //[self.agoraKit startPreview];
 }
 
 - (void)joinRoom {
@@ -88,19 +78,24 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)didSessionRouteChange:(NSNotification *)notification {
-    NSDictionary *interuptionDict = notification.userInfo;
-    NSInteger routeChangeReason = [[interuptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
-    switch (routeChangeReason) {
-        case AVAudioSessionRouteChangeReasonCategoryChange: {
-            // Set speaker as default route
-            NSError* error;
-            [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
-        }
-            break;
-        default:
-            break;
-    }
+
+#pragma mark - AgoraRtcEngineDelegate
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine firstRemoteVideoDecodedOfUid:(NSUInteger)uid size:(CGSize)size elapsed:(NSInteger)elapsed {
+    AgoraRtcVideoCanvas *remoteCanvas = [[AgoraRtcVideoCanvas alloc] init];
+    remoteCanvas.uid = uid;
+    remoteCanvas.renderMode = AgoraRtc_Render_Fit;
+    self.videoDic[@(uid)] = remoteCanvas;
+    [self.streams addObject:remoteCanvas];
+    [self.grid reloadData];
+    //[self.agoraKit setupRemoteVideo:remoteCanvas];
+}
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraRtcUserOfflineReason)reason {
+    AgoraRtcVideoCanvas *remoteStream = self.videoDic[@(uid)];
+    remoteStream.view = nil;
+    [self.streams removeObject:remoteStream];
+    [self.grid reloadData];
 }
 
 
@@ -115,29 +110,14 @@
     VideoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     cell.layer.cornerRadius = 10;
     cell.layer.masksToBounds = YES;
+    //cell.videoView.contentMode = UIViewContentModeScaleAspectFill;
+    self.streams[indexPath.row].view = cell.videoView;
     if (indexPath.row == 0) {
         self.localView = cell.videoView;
+        [self.agoraKit setupLocalVideo:self.streams[indexPath.row]];
     }
-    cell.videoView.contentMode = UIViewContentModeScaleAspectFill;
-    self.streams[indexPath.row].view = cell.videoView;
+    [self.agoraKit setupRemoteVideo:self.streams[indexPath.row]];
     return cell;
-}
-
-#pragma mark - AgoraRtcEngineDelegate
-
-- (void)rtcEngine:(AgoraRtcEngineKit *)engine firstRemoteVideoDecodedOfUid:(NSUInteger)uid size:(CGSize)size elapsed:(NSInteger)elapsed {
-    AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
-    videoCanvas.uid = uid;
-    self.videoDic[@(uid)] = videoCanvas;
-    videoCanvas.renderMode = AgoraRtc_Render_Adaptive;
-    [self.streams addObject:videoCanvas];
-    [self.grid reloadData];
-    [self.agoraKit setupRemoteVideo:videoCanvas];
-}
-
-- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraRtcUserOfflineReason)reason {
-    [self.streams removeObject:self.videoDic[@(uid)]];
-    [self.grid reloadData];
 }
 
 
@@ -215,20 +195,21 @@
 //    self.localView.mirror = !self.localView.mirror;
 //    //self.attachedViews[self.uid].mirror = !self.attachedViews[self.uid].mirror;
 //}
-//
-//- (IBAction)toggleMicrophone:(id)sender {
-//    self.localStream.audioEnabled = !self.localStream.audioEnabled;
-//    self.audioOn = !self.audioOn;
-//    [self.audioSwitch setTitle:self.audioOn?@"音频开":@"音频关" forState:UIControlStateNormal];
-//    [self.audioSwitch setTitleColor:self.audioOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
-//}
-//
-//- (IBAction)toggleVideo:(id)sender {
-//    self.localStream.videoEnabled = !self.localStream.videoEnabled;
-//    self.videoOn = !self.videoOn;
-//    [self.videoSwitch setTitle:self.videoOn?@"视频开":@"视频关" forState:UIControlStateNormal];
-//    [self.videoSwitch setTitleColor:self.videoOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
-//}
+
+- (void)didSessionRouteChange:(NSNotification *)notification {
+    NSDictionary *interuptionDict = notification.userInfo;
+    NSInteger routeChangeReason = [[interuptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+    switch (routeChangeReason) {
+        case AVAudioSessionRouteChangeReasonCategoryChange: {
+            // Set speaker as default route
+            NSError* error;
+            [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        }
+            break;
+        default:
+            break;
+    }
+}
 
 - (IBAction)disconnect:(id)sender {
     [self leaveRoom];
