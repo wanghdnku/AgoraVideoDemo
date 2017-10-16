@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MOV-2V-i0L">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video多人视频会议-->
+        <scene sceneID="gzf-Q5-s6U">
+            <objects>
+                <viewController storyboardIdentifier="mainViewController" title="Video多人视频会议" id="MOV-2V-i0L" customClass="AGOMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hkx-DK-l4C"/>
+                        <viewControllerLayoutGuide type="bottom" id="fqj-Xq-s7a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wQ8-FG-4Rh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLH-PM-FPd">
+                                <rect key="frame" x="10" y="308" width="355" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="0.69858604749999997" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Nc-DG-mzl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <state key="normal" title="加入会议">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="joinButtonDidTapped:" destination="MOV-2V-i0L" eventType="touchUpInside" id="ycK-lG-9Yi"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your_room_id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-nW-938">
+                                <rect key="frame" x="10" y="221" width="355" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请和与会者输入相同的 ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3X-to-G52">
+                                <rect key="frame" x="10" y="183" width="355" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fAL-RQ-59i">
+                                <rect key="frame" x="67" y="619" width="240" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="MKY-YV-loL"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="360p"/>
+                                    <segment title="480p"/>
+                                    <segment title="720p"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agora SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAT-RW-oUF">
+                                <rect key="frame" x="106" y="95" width="164.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JNa-nW-938" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="Chf-J3-STM"/>
+                            <constraint firstAttribute="trailing" secondItem="HLH-PM-FPd" secondAttribute="trailing" constant="10" id="ELO-EM-I6V"/>
+                            <constraint firstItem="j3X-to-G52" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="GUJ-wg-722"/>
+                            <constraint firstItem="JNa-nW-938" firstAttribute="top" secondItem="j3X-to-G52" secondAttribute="bottom" constant="17.5" id="Hc6-uV-iFJ"/>
+                            <constraint firstItem="fqj-Xq-s7a" firstAttribute="top" secondItem="fAL-RQ-59i" secondAttribute="bottom" constant="20" id="KfN-vG-mOp"/>
+                            <constraint firstItem="j3X-to-G52" firstAttribute="top" secondItem="LAT-RW-oUF" secondAttribute="bottom" constant="46" id="LgD-UY-bbD"/>
+                            <constraint firstItem="HLH-PM-FPd" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="MEh-KX-qMA"/>
+                            <constraint firstItem="LAT-RW-oUF" firstAttribute="centerX" secondItem="KvA-hd-eAP" secondAttribute="centerX" id="PdF-D0-X1Y"/>
+                            <constraint firstItem="HLH-PM-FPd" firstAttribute="top" secondItem="JNa-nW-938" secondAttribute="bottom" constant="57" id="ZDZ-OQ-LHr"/>
+                            <constraint firstItem="fAL-RQ-59i" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="hjs-mv-QwY"/>
+                            <constraint firstItem="HLH-PM-FPd" firstAttribute="centerY" secondItem="wQ8-FG-4Rh" secondAttribute="centerY" id="oXu-3y-Lu2"/>
+                            <constraint firstAttribute="trailing" secondItem="JNa-nW-938" secondAttribute="trailing" constant="10" id="wa5-kO-xm6"/>
+                            <constraint firstAttribute="trailing" secondItem="j3X-to-G52" secondAttribute="trailing" constant="10" id="x6A-B9-j3p"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KvA-hd-eAP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="创建／加入" id="SIh-Ju-ZgO"/>
+                    <connections>
+                        <outlet property="joinButton" destination="HLH-PM-FPd" id="lQZ-HA-kMv"/>
+                        <outlet property="resolutionControl" destination="fAL-RQ-59i" id="f5u-r2-pEo"/>
+                        <outlet property="roomIdTextField" destination="JNa-nW-938" id="FdH-fl-4kX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ub-gy-GAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-566" y="150"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LR5-L3-gdf">
+            <objects>
+                <navigationController storyboardIdentifier="roomNavigationController" id="5EJ-Mz-aTM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KnM-9c-SoW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8pF-Qg-21W" kind="relationship" relationship="rootViewController" id="nez-jB-8wS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZ2-uf-cYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="162" y="150"/>
+        </scene>
+        <!--视频会议-->
+        <scene sceneID="pLI-JH-rA1">
+            <objects>
+                <viewController id="8pF-Qg-21W" customClass="AGORoomViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="agu-b7-ywf"/>
+                        <viewControllerLayoutGuide type="bottom" id="eiY-J3-nc5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tUd-nB-wi8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulv-XV-v05">
+                                <rect key="frame" x="8" y="609" width="359" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.70480303700000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Umu-c8-RJR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="离开会议">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="disconnect:" destination="8pF-Qg-21W" eventType="touchUpInside" id="7he-sy-aaN"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BYt-Dn-kAD">
+                                <rect key="frame" x="8" y="72" width="359" height="529"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qIX-Pq-HKS">
+                                    <size key="itemSize" width="167" height="188"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="u8Z-RU-bd8" customClass="VideoCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frD-hw-sls" customClass="WDGVideoView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
+                                                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="frD-hw-sls" firstAttribute="top" secondItem="u8Z-RU-bd8" secondAttribute="top" id="Ehl-L1-5v3"/>
+                                            <constraint firstAttribute="trailing" secondItem="frD-hw-sls" secondAttribute="trailing" id="Se3-ji-PzX"/>
+                                            <constraint firstAttribute="bottom" secondItem="frD-hw-sls" secondAttribute="bottom" id="Zgk-MW-A2K"/>
+                                            <constraint firstItem="frD-hw-sls" firstAttribute="leading" secondItem="u8Z-RU-bd8" secondAttribute="leading" id="us5-6R-Wmm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="videoView" destination="frD-hw-sls" id="sb3-r9-Dcq"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BYt-Dn-kAD" secondAttribute="trailing" constant="8" id="4cA-RF-U4Y"/>
+                            <constraint firstItem="ulv-XV-v05" firstAttribute="leading" secondItem="tUd-nB-wi8" secondAttribute="leading" constant="8" id="IQ9-fu-JdO"/>
+                            <constraint firstItem="BYt-Dn-kAD" firstAttribute="top" secondItem="agu-b7-ywf" secondAttribute="bottom" constant="8" id="Jps-p1-FRj"/>
+                            <constraint firstItem="BYt-Dn-kAD" firstAttribute="leading" secondItem="tUd-nB-wi8" secondAttribute="leading" constant="8" id="PdN-JC-cW3"/>
+                            <constraint firstAttribute="trailing" secondItem="ulv-XV-v05" secondAttribute="trailing" constant="8" id="QrL-ts-AY4"/>
+                            <constraint firstItem="ulv-XV-v05" firstAttribute="top" secondItem="BYt-Dn-kAD" secondAttribute="bottom" constant="8" id="RKW-Vf-Cwl"/>
+                            <constraint firstItem="eiY-J3-nc5" firstAttribute="top" secondItem="ulv-XV-v05" secondAttribute="bottom" constant="8" id="VRg-bh-GWR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nkY-Vg-e3C"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="视频会议" id="Rnz-hG-Dw7">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="play" id="0Ac-4L-V4Q"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="camera" id="Kpc-F6-bpw">
+                            <connections>
+                                <action selector="switchCameraButtonTapped:" destination="8pF-Qg-21W" id="pdU-Va-7cX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="grid" destination="BYt-Dn-kAD" id="8oz-du-wNz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Kz-fD-MXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="149"/>
+        </scene>
+    </scenes>
+</document>

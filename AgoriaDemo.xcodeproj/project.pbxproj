@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D0C7F0D1433A4C4F1371AD7 /* libPods-AgoriaDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 138E68BEE21C524C0FB999AC /* libPods-AgoriaDemo.a */; };
+		BC6129701F94ACF400CAA3CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC61296F1F94ACF400CAA3CB /* AppDelegate.m */; };
+		BC6129761F94ACF400CAA3CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6129741F94ACF400CAA3CB /* Main.storyboard */; };
+		BC6129781F94ACF400CAA3CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6129771F94ACF400CAA3CB /* Assets.xcassets */; };
+		BC61297B1F94ACF400CAA3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6129791F94ACF400CAA3CB /* LaunchScreen.storyboard */; };
+		BC61297E1F94ACF400CAA3CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC61297D1F94ACF400CAA3CB /* main.m */; };
+		BC61298A1F94AFCE00CAA3CB /* AGORoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6129861F94AFCE00CAA3CB /* AGORoomViewController.m */; };
+		BC61298B1F94AFCE00CAA3CB /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6129871F94AFCE00CAA3CB /* VideoCollectionViewCell.m */; };
+		BC61298C1F94AFCE00CAA3CB /* AGOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6129891F94AFCE00CAA3CB /* AGOMainViewController.m */; };
+		BC61298F1F94B64C00CAA3CB /* AppID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC61298E1F94B64C00CAA3CB /* AppID.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		138E68BEE21C524C0FB999AC /* libPods-AgoriaDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AgoriaDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47273D8D3F0D03E3C226B8F9 /* Pods-AgoriaDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgoriaDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AgoriaDemo/Pods-AgoriaDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5F3092659E4B407904A1888C /* Pods-AgoriaDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AgoriaDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AgoriaDemo/Pods-AgoriaDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BC61296B1F94ACF400CAA3CB /* AgoriaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgoriaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC61296E1F94ACF400CAA3CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC61296F1F94ACF400CAA3CB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC6129751F94ACF400CAA3CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC6129771F94ACF400CAA3CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC61297A1F94ACF400CAA3CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC61297C1F94ACF400CAA3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC61297D1F94ACF400CAA3CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC6129841F94AFCE00CAA3CB /* AGORoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGORoomViewController.h; sourceTree = "<group>"; };
+		BC6129851F94AFCE00CAA3CB /* AGOMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGOMainViewController.h; sourceTree = "<group>"; };
+		BC6129861F94AFCE00CAA3CB /* AGORoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGORoomViewController.m; sourceTree = "<group>"; };
+		BC6129871F94AFCE00CAA3CB /* VideoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionViewCell.m; sourceTree = "<group>"; };
+		BC6129881F94AFCE00CAA3CB /* VideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionViewCell.h; sourceTree = "<group>"; };
+		BC6129891F94AFCE00CAA3CB /* AGOMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGOMainViewController.m; sourceTree = "<group>"; };
+		BC61298D1F94B64C00CAA3CB /* AppID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppID.h; sourceTree = "<group>"; };
+		BC61298E1F94B64C00CAA3CB /* AppID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppID.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC6129681F94ACF400CAA3CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C7F0D1433A4C4F1371AD7 /* libPods-AgoriaDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC6129621F94ACF400CAA3CB = {
+			isa = PBXGroup;
+			children = (
+				BC61296D1F94ACF400CAA3CB /* AgoriaDemo */,
+				BC61296C1F94ACF400CAA3CB /* Products */,
+				EFEB5FDB33561213632B6F10 /* Pods */,
+				C4086D1CC004AE1BBD6B68CC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC61296C1F94ACF400CAA3CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC61296B1F94ACF400CAA3CB /* AgoriaDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC61296D1F94ACF400CAA3CB /* AgoriaDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BC61298D1F94B64C00CAA3CB /* AppID.h */,
+				BC61298E1F94B64C00CAA3CB /* AppID.m */,
+				BC61296E1F94ACF400CAA3CB /* AppDelegate.h */,
+				BC61296F1F94ACF400CAA3CB /* AppDelegate.m */,
+				BC6129851F94AFCE00CAA3CB /* AGOMainViewController.h */,
+				BC6129891F94AFCE00CAA3CB /* AGOMainViewController.m */,
+				BC6129841F94AFCE00CAA3CB /* AGORoomViewController.h */,
+				BC6129861F94AFCE00CAA3CB /* AGORoomViewController.m */,
+				BC6129881F94AFCE00CAA3CB /* VideoCollectionViewCell.h */,
+				BC6129871F94AFCE00CAA3CB /* VideoCollectionViewCell.m */,
+				BC6129741F94ACF400CAA3CB /* Main.storyboard */,
+				BC6129771F94ACF400CAA3CB /* Assets.xcassets */,
+				BC6129791F94ACF400CAA3CB /* LaunchScreen.storyboard */,
+				BC61297C1F94ACF400CAA3CB /* Info.plist */,
+				BC61297D1F94ACF400CAA3CB /* main.m */,
+			);
+			path = AgoriaDemo;
+			sourceTree = "<group>";
+		};
+		C4086D1CC004AE1BBD6B68CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				138E68BEE21C524C0FB999AC /* libPods-AgoriaDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EFEB5FDB33561213632B6F10 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F3092659E4B407904A1888C /* Pods-AgoriaDemo.debug.xcconfig */,
+				47273D8D3F0D03E3C226B8F9 /* Pods-AgoriaDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC61296A1F94ACF400CAA3CB /* AgoriaDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6129811F94ACF400CAA3CB /* Build configuration list for PBXNativeTarget "AgoriaDemo" */;
+			buildPhases = (
+				04883D298423EE894F8E1224 /* [CP] Check Pods Manifest.lock */,
+				BC6129671F94ACF400CAA3CB /* Sources */,
+				BC6129681F94ACF400CAA3CB /* Frameworks */,
+				BC6129691F94ACF400CAA3CB /* Resources */,
+				C2AE7821C39433B0E0252AFF /* [CP] Embed Pods Frameworks */,
+				A2158B29AC3882EAD439C09B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AgoriaDemo;
+			productName = AgoriaDemo;
+			productReference = BC61296B1F94ACF400CAA3CB /* AgoriaDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC6129631F94ACF400CAA3CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Wilddog;
+				TargetAttributes = {
+					BC61296A1F94ACF400CAA3CB = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BC6129661F94ACF400CAA3CB /* Build configuration list for PBXProject "AgoriaDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC6129621F94ACF400CAA3CB;
+			productRefGroup = BC61296C1F94ACF400CAA3CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC61296A1F94ACF400CAA3CB /* AgoriaDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC6129691F94ACF400CAA3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC61297B1F94ACF400CAA3CB /* LaunchScreen.storyboard in Resources */,
+				BC6129781F94ACF400CAA3CB /* Assets.xcassets in Resources */,
+				BC6129761F94ACF400CAA3CB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04883D298423EE894F8E1224 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2158B29AC3882EAD439C09B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AgoriaDemo/Pods-AgoriaDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AE7821C39433B0E0252AFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AgoriaDemo/Pods-AgoriaDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC6129671F94ACF400CAA3CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC61298F1F94B64C00CAA3CB /* AppID.m in Sources */,
+				BC61297E1F94ACF400CAA3CB /* main.m in Sources */,
+				BC61298C1F94AFCE00CAA3CB /* AGOMainViewController.m in Sources */,
+				BC6129701F94ACF400CAA3CB /* AppDelegate.m in Sources */,
+				BC61298B1F94AFCE00CAA3CB /* VideoCollectionViewCell.m in Sources */,
+				BC61298A1F94AFCE00CAA3CB /* AGORoomViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC6129741F94ACF400CAA3CB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6129751F94ACF400CAA3CB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC6129791F94ACF400CAA3CB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC61297A1F94ACF400CAA3CB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC61297F1F94ACF400CAA3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BC6129801F94ACF400CAA3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC6129821F94ACF400CAA3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F3092659E4B407904A1888C /* Pods-AgoriaDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5RERN32D73;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AgoriaDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.www.AgoriaDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC6129831F94ACF400CAA3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47273D8D3F0D03E3C226B8F9 /* Pods-AgoriaDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5RERN32D73;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AgoriaDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.www.AgoriaDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC6129661F94ACF400CAA3CB /* Build configuration list for PBXProject "AgoriaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC61297F1F94ACF400CAA3CB /* Debug */,
+				BC6129801F94ACF400CAA3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC6129811F94ACF400CAA3CB /* Build configuration list for PBXNativeTarget "AgoriaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6129821F94ACF400CAA3CB /* Debug */,
+				BC6129831F94ACF400CAA3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC6129631F94ACF400CAA3CB /* Project object */;
+}

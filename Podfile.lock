@@ -1,0 +1,12 @@
+PODS:
+  - AgoraRtcEngine_iOS (1.13.1)
+
+DEPENDENCIES:
+  - AgoraRtcEngine_iOS
+
+SPEC CHECKSUMS:
+  AgoraRtcEngine_iOS: f9efa2b994c30abd6a7fd90dd9572a1fd5bf12d0
+
+PODFILE CHECKSUM: 1b7e17dbf82888802f124f7a602b6219113a0084
+
+COCOAPODS: 1.2.0
