@@ -16,8 +16,9 @@
 
 @property (nonatomic, strong) AgoraRtcEngineKit *agoraKit;
 @property (nonatomic, strong) UIView *localView;
-@property (nonatomic, strong) WDGLocalStream *localStream;
+//@property (nonatomic, strong) WDGLocalStream *localStream;
 @property (nonatomic, strong) NSMutableArray<AgoraRtcVideoCanvas *> *streams;
+@property (nonatomic, strong) NSMutableDictionary *videoDic;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *grid;
 @property (nonatomic, weak) IBOutlet UIButton *audioSwitch;
@@ -37,6 +38,7 @@
     [self setupVideo];
     
     _streams = [[NSMutableArray alloc] init];
+    _videoDic = [[NSMutableDictionary alloc] init];
     
     // 配置 UICollectionView
     [self setupCollectionView];
@@ -66,10 +68,12 @@
 - (void)setupLocalStream {
     AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
     videoCanvas.uid = 0;
-    videoCanvas.view = self.localVideo;
+    [self.streams addObject:videoCanvas];
+    [self.grid reloadData];
+    //videoCanvas.view = self.localView;
     videoCanvas.renderMode = AgoraRtc_Render_Adaptive;
     [self.agoraKit setupLocalVideo:videoCanvas];
-    [self.streams addObject:videoCanvas];
+    
 }
 
 - (void)joinRoom {
@@ -121,52 +125,65 @@
 
 #pragma mark - AgoraRtcEngineDelegate
 
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine firstRemoteVideoDecodedOfUid:(NSUInteger)uid size:(CGSize)size elapsed:(NSInteger)elapsed {
+    AgoraRtcVideoCanvas *videoCanvas = [[AgoraRtcVideoCanvas alloc] init];
+    videoCanvas.uid = uid;
+    self.videoDic[@(uid)] = videoCanvas;
+    videoCanvas.renderMode = AgoraRtc_Render_Adaptive;
+    [self.streams addObject:videoCanvas];
+    [self.grid reloadData];
+    [self.agoraKit setupRemoteVideo:videoCanvas];
+}
 
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraRtcUserOfflineReason)reason {
+    [self.streams removeObject:self.videoDic[@(uid)]];
+    [self.grid reloadData];
+}
 
 
 #pragma mark - WDGRoomDelegate
 
-- (void)wilddogRoomDidConnect:(WDGRoom *)wilddogRoom {
-    NSLog(@"Room Connected!");
-    // 发布本地流
-    [self publishLocalStream];
-}
-
-- (void)wilddogRoomDidDisconnect:(WDGRoom *)wilddogRoom {
-    NSLog(@"Room Disconnected!");
-    //__weak __typeof__(self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //__strong __typeof__(self) strongSelf = weakSelf;
-        NSLog(@"Disconnected!");
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    });
-}
-
-- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamAdded:(WDGRoomStream *)roomStream {
-    NSLog(@"RoomStream Added!");
-    [self subscribeRoomStream:roomStream];
-}
-
-- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamRemoved:(WDGRoomStream *)roomStream {
-    NSLog(@"RoomStream Removed!");
-    [self unsubscribeRoomStream:roomStream];
-    [self.streams removeObject:roomStream];
-    [self.grid reloadData];
-}
-
-- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamReceived:(WDGRoomStream *)roomStream {
-    NSLog(@"RoomStream Received!");
-    [self.streams addObject:roomStream];
-    [self.grid reloadData];
-}
-
-- (void)wilddogRoom:(WDGRoom *)wilddogRoom didFailWithError:(NSError *)error {
-    NSLog(@"Room Failed: %@", error);
-    if (error) {
-        NSString *errorMessage = [NSString stringWithFormat:@"会议错误: %@", [error localizedDescription]];
-        [self showAlertWithTitle:@"提示" message:errorMessage];
-    }
-}
+//- (void)wilddogRoomDidConnect:(WDGRoom *)wilddogRoom {
+//    NSLog(@"Room Connected!");
+//    // 发布本地流
+//    [self publishLocalStream];
+//}
+//
+//- (void)wilddogRoomDidDisconnect:(WDGRoom *)wilddogRoom {
+//    NSLog(@"Room Disconnected!");
+//    //__weak __typeof__(self) weakSelf = self;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        //__strong __typeof__(self) strongSelf = weakSelf;
+//        NSLog(@"Disconnected!");
+//        [self dismissViewControllerAnimated:YES completion:NULL];
+//    });
+//}
+//
+//- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamAdded:(WDGRoomStream *)roomStream {
+//    NSLog(@"RoomStream Added!");
+//    [self subscribeRoomStream:roomStream];
+//}
+//
+//- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamRemoved:(WDGRoomStream *)roomStream {
+//    NSLog(@"RoomStream Removed!");
+//    [self unsubscribeRoomStream:roomStream];
+//    [self.streams removeObject:roomStream];
+//    [self.grid reloadData];
+//}
+//
+//- (void)wilddogRoom:(WDGRoom *)wilddogRoom didStreamReceived:(WDGRoomStream *)roomStream {
+//    NSLog(@"RoomStream Received!");
+//    [self.streams addObject:roomStream];
+//    [self.grid reloadData];
+//}
+//
+//- (void)wilddogRoom:(WDGRoom *)wilddogRoom didFailWithError:(NSError *)error {
+//    NSLog(@"Room Failed: %@", error);
+//    if (error) {
+//        NSString *errorMessage = [NSString stringWithFormat:@"会议错误: %@", [error localizedDescription]];
+//        [self showAlertWithTitle:@"提示" message:errorMessage];
+//    }
+//}
 
 #pragma mark - Internal methods
 
@@ -193,25 +210,25 @@
 
 #pragma mark - Action Buttons
 
-- (IBAction)switchCameraButtonTapped:(id)sender {
-    [self.localStream switchCamera];
-    self.localView.mirror = !self.localView.mirror;
-    //self.attachedViews[self.uid].mirror = !self.attachedViews[self.uid].mirror;
-}
-
-- (IBAction)toggleMicrophone:(id)sender {
-    self.localStream.audioEnabled = !self.localStream.audioEnabled;
-    self.audioOn = !self.audioOn;
-    [self.audioSwitch setTitle:self.audioOn?@"音频开":@"音频关" forState:UIControlStateNormal];
-    [self.audioSwitch setTitleColor:self.audioOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
-}
-
-- (IBAction)toggleVideo:(id)sender {
-    self.localStream.videoEnabled = !self.localStream.videoEnabled;
-    self.videoOn = !self.videoOn;
-    [self.videoSwitch setTitle:self.videoOn?@"视频开":@"视频关" forState:UIControlStateNormal];
-    [self.videoSwitch setTitleColor:self.videoOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
-}
+//- (IBAction)switchCameraButtonTapped:(id)sender {
+//    [self.localStream switchCamera];
+//    self.localView.mirror = !self.localView.mirror;
+//    //self.attachedViews[self.uid].mirror = !self.attachedViews[self.uid].mirror;
+//}
+//
+//- (IBAction)toggleMicrophone:(id)sender {
+//    self.localStream.audioEnabled = !self.localStream.audioEnabled;
+//    self.audioOn = !self.audioOn;
+//    [self.audioSwitch setTitle:self.audioOn?@"音频开":@"音频关" forState:UIControlStateNormal];
+//    [self.audioSwitch setTitleColor:self.audioOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
+//}
+//
+//- (IBAction)toggleVideo:(id)sender {
+//    self.localStream.videoEnabled = !self.localStream.videoEnabled;
+//    self.videoOn = !self.videoOn;
+//    [self.videoSwitch setTitle:self.videoOn?@"视频开":@"视频关" forState:UIControlStateNormal];
+//    [self.videoSwitch setTitleColor:self.videoOn?[UIColor colorWithRed:0 green:0.5 blue:0 alpha:1]:[UIColor redColor] forState:UIControlStateNormal];
+//}
 
 - (IBAction)disconnect:(id)sender {
     [self leaveRoom];

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MOV-2V-i0L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MOV-2V-i0L">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -79,14 +78,13 @@
                             <constraint firstItem="fqj-Xq-s7a" firstAttribute="top" secondItem="fAL-RQ-59i" secondAttribute="bottom" constant="20" id="KfN-vG-mOp"/>
                             <constraint firstItem="j3X-to-G52" firstAttribute="top" secondItem="LAT-RW-oUF" secondAttribute="bottom" constant="46" id="LgD-UY-bbD"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="MEh-KX-qMA"/>
-                            <constraint firstItem="LAT-RW-oUF" firstAttribute="centerX" secondItem="KvA-hd-eAP" secondAttribute="centerX" id="PdF-D0-X1Y"/>
+                            <constraint firstItem="LAT-RW-oUF" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="PdF-D0-X1Y"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="top" secondItem="JNa-nW-938" secondAttribute="bottom" constant="57" id="ZDZ-OQ-LHr"/>
                             <constraint firstItem="fAL-RQ-59i" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="hjs-mv-QwY"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="centerY" secondItem="wQ8-FG-4Rh" secondAttribute="centerY" id="oXu-3y-Lu2"/>
                             <constraint firstAttribute="trailing" secondItem="JNa-nW-938" secondAttribute="trailing" constant="10" id="wa5-kO-xm6"/>
                             <constraint firstAttribute="trailing" secondItem="j3X-to-G52" secondAttribute="trailing" constant="10" id="x6A-B9-j3p"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="KvA-hd-eAP"/>
                     </view>
                     <navigationItem key="navigationItem" title="创建／加入" id="SIh-Ju-ZgO"/>
                     <connections>
@@ -163,7 +161,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frD-hw-sls" customClass="WDGVideoView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frD-hw-sls">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -176,10 +174,14 @@
                                             <constraint firstItem="frD-hw-sls" firstAttribute="leading" secondItem="u8Z-RU-bd8" secondAttribute="leading" id="us5-6R-Wmm"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="videoView" destination="frD-hw-sls" id="sb3-r9-Dcq"/>
+                                            <outlet property="videoView" destination="frD-hw-sls" id="f7H-tO-J3V"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8pF-Qg-21W" id="5hi-dJ-9az"/>
+                                    <outlet property="delegate" destination="8pF-Qg-21W" id="o9e-gQ-dSv"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,7 +194,6 @@
                             <constraint firstItem="ulv-XV-v05" firstAttribute="top" secondItem="BYt-Dn-kAD" secondAttribute="bottom" constant="8" id="RKW-Vf-Cwl"/>
                             <constraint firstItem="eiY-J3-nc5" firstAttribute="top" secondItem="ulv-XV-v05" secondAttribute="bottom" constant="8" id="VRg-bh-GWR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="nkY-Vg-e3C"/>
                     </view>
                     <navigationItem key="navigationItem" title="视频会议" id="Rnz-hG-Dw7">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="play" id="0Ac-4L-V4Q"/>

@@ -10,6 +10,6 @@
 
 @interface VideoCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) IBOutlet UIView *videoView;
+@property (weak, nonatomic) IBOutlet UIView *videoView;
 
 @end
