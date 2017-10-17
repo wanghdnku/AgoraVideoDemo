@@ -161,7 +161,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frD-hw-sls">
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="frD-hw-sls">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="188"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>

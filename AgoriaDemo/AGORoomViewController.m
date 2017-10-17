@@ -59,7 +59,7 @@
     AgoraRtcVideoCanvas *localCanvas = [[AgoraRtcVideoCanvas alloc] init];
     localCanvas.uid = 0;
     localCanvas.view = self.localView;
-    localCanvas.renderMode = AgoraRtc_Render_Adaptive;
+    localCanvas.renderMode = AgoraRtc_Render_Hidden;
     [self.streams addObject:localCanvas];
     [self.grid reloadData];
     //[self.agoraKit setupLocalVideo:localCanvas];
@@ -84,7 +84,7 @@
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine firstRemoteVideoDecodedOfUid:(NSUInteger)uid size:(CGSize)size elapsed:(NSInteger)elapsed {
     AgoraRtcVideoCanvas *remoteCanvas = [[AgoraRtcVideoCanvas alloc] init];
     remoteCanvas.uid = uid;
-    remoteCanvas.renderMode = AgoraRtc_Render_Fit;
+    remoteCanvas.renderMode = AgoraRtc_Render_Hidden;
     self.videoDic[@(uid)] = remoteCanvas;
     [self.streams addObject:remoteCanvas];
     [self.grid reloadData];
