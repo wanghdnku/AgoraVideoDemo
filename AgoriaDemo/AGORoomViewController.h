@@ -11,6 +11,9 @@
 @interface AGORoomViewController : UIViewController
 
 @property (nonatomic, strong) NSString *roomId;
+
 @property (nonatomic, assign) NSInteger dimension;
+@property (nonatomic, assign) int frame;
+@property (nonatomic, assign) int fps;
 
 @end

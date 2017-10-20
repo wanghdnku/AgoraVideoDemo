@@ -54,7 +54,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fAL-RQ-59i">
                                 <rect key="frame" x="67" y="619" width="240" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="MKY-YV-loL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="MKY-YV-loL"/>
                                 </constraints>
                                 <segments>
                                     <segment title="360p"/>
@@ -63,31 +63,58 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agora SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAT-RW-oUF">
-                                <rect key="frame" x="106" y="95" width="164.5" height="42"/>
+                                <rect key="frame" x="106" y="91" width="164.5" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="15L-G1-wg8">
+                                <rect key="frame" x="67" y="582" width="240" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="NOv-lY-p5e"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="15 fps"/>
+                                    <segment title="30 fps"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ecx-va-s1T">
+                                <rect key="frame" x="67" y="545" width="240" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="4Bx-Oe-j2e"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="1 / 6"/>
+                                    <segment title="1 / 4"/>
+                                    <segment title="1 / 1"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="15L-G1-wg8" firstAttribute="top" secondItem="ecx-va-s1T" secondAttribute="bottom" constant="9" id="0Xm-j9-lUl"/>
                             <constraint firstItem="JNa-nW-938" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="Chf-J3-STM"/>
                             <constraint firstAttribute="trailing" secondItem="HLH-PM-FPd" secondAttribute="trailing" constant="10" id="ELO-EM-I6V"/>
                             <constraint firstItem="j3X-to-G52" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="GUJ-wg-722"/>
                             <constraint firstItem="JNa-nW-938" firstAttribute="top" secondItem="j3X-to-G52" secondAttribute="bottom" constant="17.5" id="Hc6-uV-iFJ"/>
                             <constraint firstItem="fqj-Xq-s7a" firstAttribute="top" secondItem="fAL-RQ-59i" secondAttribute="bottom" constant="20" id="KfN-vG-mOp"/>
-                            <constraint firstItem="j3X-to-G52" firstAttribute="top" secondItem="LAT-RW-oUF" secondAttribute="bottom" constant="46" id="LgD-UY-bbD"/>
+                            <constraint firstItem="j3X-to-G52" firstAttribute="top" secondItem="LAT-RW-oUF" secondAttribute="bottom" constant="50" id="LgD-UY-bbD"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="leading" secondItem="wQ8-FG-4Rh" secondAttribute="leading" constant="10" id="MEh-KX-qMA"/>
                             <constraint firstItem="LAT-RW-oUF" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="PdF-D0-X1Y"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="top" secondItem="JNa-nW-938" secondAttribute="bottom" constant="57" id="ZDZ-OQ-LHr"/>
                             <constraint firstItem="fAL-RQ-59i" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="hjs-mv-QwY"/>
+                            <constraint firstItem="ecx-va-s1T" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="iQR-hT-mhc"/>
+                            <constraint firstItem="15L-G1-wg8" firstAttribute="centerX" secondItem="wQ8-FG-4Rh" secondAttribute="centerX" id="nM6-7f-dqa"/>
                             <constraint firstItem="HLH-PM-FPd" firstAttribute="centerY" secondItem="wQ8-FG-4Rh" secondAttribute="centerY" id="oXu-3y-Lu2"/>
                             <constraint firstAttribute="trailing" secondItem="JNa-nW-938" secondAttribute="trailing" constant="10" id="wa5-kO-xm6"/>
                             <constraint firstAttribute="trailing" secondItem="j3X-to-G52" secondAttribute="trailing" constant="10" id="x6A-B9-j3p"/>
+                            <constraint firstItem="fAL-RQ-59i" firstAttribute="top" secondItem="15L-G1-wg8" secondAttribute="bottom" constant="9" id="yvy-pz-BVl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="创建／加入" id="SIh-Ju-ZgO"/>
                     <connections>
+                        <outlet property="fpsControl" destination="15L-G1-wg8" id="H1y-5g-xql"/>
+                        <outlet property="frameControl" destination="ecx-va-s1T" id="1fp-aE-HdF"/>
                         <outlet property="joinButton" destination="HLH-PM-FPd" id="lQZ-HA-kMv"/>
                         <outlet property="resolutionControl" destination="fAL-RQ-59i" id="f5u-r2-pEo"/>
                         <outlet property="roomIdTextField" destination="JNa-nW-938" id="FdH-fl-4kX"/>
@@ -111,7 +138,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZ2-uf-cYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="150"/>
+            <point key="canvasLocation" x="121" y="150"/>
         </scene>
         <!--视频会议-->
         <scene sceneID="pLI-JH-rA1">
@@ -127,7 +154,7 @@
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulv-XV-v05">
                                 <rect key="frame" x="8" y="609" width="359" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.70480303700000002" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Umu-c8-RJR"/>
                                 </constraints>
@@ -145,7 +172,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BYt-Dn-kAD">
-                                <rect key="frame" x="8" y="72" width="359" height="529"/>
+                                <rect key="frame" x="8" y="64" width="359" height="537"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qIX-Pq-HKS">
                                     <size key="itemSize" width="167" height="188"/>
@@ -188,7 +215,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BYt-Dn-kAD" secondAttribute="trailing" constant="8" id="4cA-RF-U4Y"/>
                             <constraint firstItem="ulv-XV-v05" firstAttribute="leading" secondItem="tUd-nB-wi8" secondAttribute="leading" constant="8" id="IQ9-fu-JdO"/>
-                            <constraint firstItem="BYt-Dn-kAD" firstAttribute="top" secondItem="agu-b7-ywf" secondAttribute="bottom" constant="8" id="Jps-p1-FRj"/>
+                            <constraint firstItem="BYt-Dn-kAD" firstAttribute="top" secondItem="agu-b7-ywf" secondAttribute="bottom" id="Jps-p1-FRj"/>
                             <constraint firstItem="BYt-Dn-kAD" firstAttribute="leading" secondItem="tUd-nB-wi8" secondAttribute="leading" constant="8" id="PdN-JC-cW3"/>
                             <constraint firstAttribute="trailing" secondItem="ulv-XV-v05" secondAttribute="trailing" constant="8" id="QrL-ts-AY4"/>
                             <constraint firstItem="ulv-XV-v05" firstAttribute="top" secondItem="BYt-Dn-kAD" secondAttribute="bottom" constant="8" id="RKW-Vf-Cwl"/>
@@ -209,7 +236,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kz-fD-MXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="149"/>
+            <point key="canvasLocation" x="818" y="150"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

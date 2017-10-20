@@ -172,10 +172,18 @@
     self.grid.delegate = self;
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat width = (self.view.bounds.size.width - 24) / 2;
-    CGFloat height = (self.view.bounds.size.height - 162) / 3;
+    CGFloat height = (self.view.bounds.size.height - 154) / 3;
+    if (self.frame == 1) {
+        width = self.view.bounds.size.width - (8*2);
+        height = self.view.bounds.size.height - (20 + 44 + 8*3 + 50);
+    } else if (self.frame == 4) {
+        width = (self.view.bounds.size.width - 24) / 2;
+        height = (self.view.bounds.size.height - 146) / 2;
+    }
+    self.grid.pagingEnabled = YES;
     flowLayout.itemSize = CGSizeMake(width, height);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    flowLayout.sectionInset = UIEdgeInsetsMake(8, 0, 0, 0);
     flowLayout.minimumLineSpacing = 8;
     flowLayout.minimumInteritemSpacing = 0;
     self.grid.collectionViewLayout = flowLayout;
@@ -190,11 +198,9 @@
 
 #pragma mark - Action Buttons
 
-//- (IBAction)switchCameraButtonTapped:(id)sender {
-//    [self.localStream switchCamera];
-//    self.localView.mirror = !self.localView.mirror;
-//    //self.attachedViews[self.uid].mirror = !self.attachedViews[self.uid].mirror;
-//}
+- (IBAction)switchCameraButtonTapped:(id)sender {
+    [self.agoraKit switchCamera];
+}
 
 - (void)didSessionRouteChange:(NSNotification *)notification {
     NSDictionary *interuptionDict = notification.userInfo;
